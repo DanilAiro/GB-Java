@@ -93,36 +93,26 @@ public class Funcs {
     Scanner sc = new Scanner(System.in);
     System.out.print("Введите уравнение: ");
     String s = sc.nextLine();
-    // sc.close();
-    char[] arr = s.toCharArray();
-    String[] nums = new String[] { "", "", "" };
-    int[] intNums = new int[] { 0, 0, 0 };
-    int k = 0;
 
-    for (int i = 0; i < nums.length; i++) {
-      for (int j = k; j < arr.length; j++) {
-        if (arr[j] != '+' && arr[j] != ' ' && arr[j] != '=') {
-          nums[i] += arr[j];
-        } else if (arr[j] == '+' || arr[j] == '=') {
-          break;
-        }
-
-        k = j + 2;
-      }
-    }
+    String str = "";
+    int num1 = 0;
+    int num2 = 0;
+    int num3 = 0;
 
     for (int i = 0; i < 10; i++) {
-      intNums[0] = Integer.parseInt(nums[0].replace("?", Integer.toString(i)));
-      intNums[1] = Integer.parseInt(nums[1].replace("?", Integer.toString(i)));
-      intNums[2] = Integer.parseInt(nums[2].replace("?", Integer.toString(i)));
-      
-      if (intNums[0] + intNums[1] == intNums[2]) {
-        System.out.printf("%d + %d = %d\n\n", intNums[0], intNums[1], intNums[2]);
-        break;
+      str = s.replace("?", Integer.toString(i));
+      str = str.replace(" ", "");
+
+      num1 = Integer.parseInt(str.substring(0, str.indexOf("+")));
+      num2 = Integer.parseInt(str.substring(str.indexOf("+") + 1, str.indexOf("=")));
+      num3 = Integer.parseInt(str.substring(str.indexOf("=") + 1, str.length()));
+
+      if (num1 + num2 == num3) {
+        System.out.printf("%d + %d = %d\n\n", num1, num2, num3);
       }
     }
 
-    if (intNums[0] + intNums[1] != intNums[2]) {
+    if (num1 + num2 == num3) {
       System.out.println("Решения нет!\n\n");
     }
   }
