@@ -24,9 +24,8 @@ public class Program {
         boolean isActive = true;
 
         while (isActive) {
-            System.out.println();
             System.out.print(
-                    "Введите 1 для вывода всех ноутбуков\nВведите 2 для настройки фильтров\nВведите 3 для вывода ноутбуков подходящих по фильтру\nДля выхода введите 0: ");
+                    "Введите 1 для вывода всех ноутбуков\nВведите 2 для поиска с фильтром\nДля выхода введите 0: ");
             Scanner sc = new Scanner(System.in);
             int num = sc.nextInt();
             sc.nextLine();
@@ -34,14 +33,12 @@ public class Program {
             switch (num) {
                 case 1:
                     System.out.println();
-                    Filter.showAll(laptopMap);
+                    Server.showAll(laptopMap);
                     break;
 
                 case 2:
                     System.out.println();
-                    System.out.print();
-                    num = sc.nextInt();
-                    sc.nextLine();
+                    Server.filter(laptopMap);
                     break;
 
                 case 0:
